@@ -21,6 +21,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding2
 import com.shahtott.sh_news_app.ui.presentation.Dimens.PageIndicatorWidth
 import com.shahtott.sh_news_app.ui.presentation.common.BackTextButton
@@ -78,6 +79,8 @@ fun OnBoardingScreen() {
                     }
                 }
 
+                Spacer(modifier = Modifier.width(8.dp))
+
                 MainButton(text = buttonState.value[1]) {
                     scope.launch {
                         if (pagerState.currentPage == 3) {
@@ -89,7 +92,7 @@ fun OnBoardingScreen() {
                 }
             }
         }
-
+        Spacer(modifier = Modifier.weight(0.3f))
     }
 }
 
