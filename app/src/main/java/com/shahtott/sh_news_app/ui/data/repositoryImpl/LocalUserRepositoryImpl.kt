@@ -1,17 +1,27 @@
 package com.shahtott.sh_news_app.ui.data.repositoryImpl
 
 import android.content.Context
+import androidx.datastore.preferences.core.edit
+import com.shahtott.sh_news_app.ui.data.local.PreferenceKeys
+import com.shahtott.sh_news_app.ui.data.local.dataStore
 import com.shahtott.sh_news_app.ui.domain.repository.LocalUserRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class LocalUserRepositoryImpl(
     private val context: Context
-):LocalUserRepository {
+) : LocalUserRepository {
+
     override suspend fun saveAppEntry() {
-        TODO("Not yet implemented")
+        context.dataStore.edit { settings ->
+            settings[PreferenceKeys.APP_ENTRY] = true
+        }
     }
 
     override fun getAppEntry(): Flow<Boolean> {
-        TODO("Not yet implemented")
+        return context.dataStore.data.map{ preferences ->
+            preferences[PreferenceKeys.APP_ENTRY] ?: false
+        }
     }
 }
+

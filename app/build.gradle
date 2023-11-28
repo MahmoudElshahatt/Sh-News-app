@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
- //   id 'com.google.dagger.hilt.android'
+    id 'com.google.dagger.hilt.android'
     id 'kotlin-parcelize'
 }
 
@@ -73,6 +73,13 @@ dependencies {
 
     //Accompanist
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta"
+
+    //Datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    //Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.45"
+    kapt "com.google.dagger:hilt-compiler:2.45"
 
 
 }
