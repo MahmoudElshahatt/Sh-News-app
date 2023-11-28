@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding2
 import com.shahtott.sh_news_app.ui.presentation.Dimens.PageIndicatorWidth
 import com.shahtott.sh_news_app.ui.presentation.common.BackTextButton
@@ -31,9 +32,18 @@ import com.shahtott.sh_news_app.ui.presentation.onboarding.components.onBoarding
 import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 import kotlinx.coroutines.launch
 
+@Composable
+fun OnBoardingScreen(
+    viewModel: OnBoardingViewModel = hiltViewModel()
+) {
+    OnBoardingContent(viewModel::onEvent)
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingContent(
+    onEvent: (OnBoardingEvent) -> Unit
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
             pages.size
@@ -83,8 +93,8 @@ fun OnBoardingScreen() {
 
                 MainButton(text = buttonState.value[1]) {
                     scope.launch {
-                        if (pagerState.currentPage == 3) {
-
+                        if (pagerState.currentPage == 2) {
+                            onEvent(OnBoardingEvent.SaveDataEntry)
                         } else {
                             pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                         }

@@ -71,15 +71,23 @@ dependencies {
     //Splash Api
     implementation "androidx.core:core-splashscreen:1.0.1"
 
+
     //Accompanist
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta"
 
     //Datastore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
+    //Compose Navigation
+    def nav_version = "2.6.0"
+    implementation "androidx.navigation:navigation-compose:$nav_version"
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
+
     //Dagger Hilt
     implementation "com.google.dagger:hilt-android:2.45"
     kapt "com.google.dagger:hilt-compiler:2.45"
 
+    //Compose Foundation
+    implementation "androidx.compose.foundation:foundation:1.4.3"
 
 }
