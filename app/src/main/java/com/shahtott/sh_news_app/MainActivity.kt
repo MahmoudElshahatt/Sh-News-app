@@ -19,23 +19,17 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var appEntryUseCase: AppEntryUseCase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         installSplashScreen()
-        lifecycleScope.launch {
-            appEntryUseCase.getAppEntryUseCase().collect {
-                Log.d("Test", "$it")
-            }
-        }
+
         //Compose UI
         setContent {
             ShNewsappTheme {
                 Surface {
-                    OnBoardingScreen()
+
                 }
             }
         }
