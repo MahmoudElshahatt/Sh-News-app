@@ -1,10 +1,10 @@
-package com.shahtott.sh_news_app.ui.data.repositoryImpl
+package com.shahtott.sh_news_app.data.repositoryImpl
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
-import com.shahtott.sh_news_app.ui.data.local.PreferenceKeys
-import com.shahtott.sh_news_app.ui.data.local.dataStore
-import com.shahtott.sh_news_app.ui.domain.repository.LocalUserRepository
+import com.shahtott.sh_news_app.data.local.PreferenceKeys
+import com.shahtott.sh_news_app.data.local.dataStore
+import com.shahtott.sh_news_app.domain.repository.LocalUserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

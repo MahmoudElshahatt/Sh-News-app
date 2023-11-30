@@ -1,4 +1,4 @@
-package com.shahtott.sh_news_app.ui.domain.repository
+package com.shahtott.sh_news_app.domain.repository
 
 import kotlinx.coroutines.flow.Flow
 

@@ -1,11 +1,11 @@
-package com.shahtott.sh_news_app.ui.di
+package com.shahtott.sh_news_app.di
 
 import android.content.Context
-import com.shahtott.sh_news_app.ui.data.repositoryImpl.LocalUserRepositoryImpl
-import com.shahtott.sh_news_app.ui.domain.repository.LocalUserRepository
-import com.shahtott.sh_news_app.ui.domain.useCase.AppEntryUseCase
-import com.shahtott.sh_news_app.ui.domain.useCase.GetAppEntryUseCase
-import com.shahtott.sh_news_app.ui.domain.useCase.SaveAppEntryUseCase
+import com.shahtott.sh_news_app.data.repositoryImpl.LocalUserRepositoryImpl
+import com.shahtott.sh_news_app.domain.repository.LocalUserRepository
+import com.shahtott.sh_news_app.domain.useCase.AppEntryUseCase
+import com.shahtott.sh_news_app.domain.useCase.GetAppEntryUseCase
+import com.shahtott.sh_news_app.domain.useCase.SaveAppEntryUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

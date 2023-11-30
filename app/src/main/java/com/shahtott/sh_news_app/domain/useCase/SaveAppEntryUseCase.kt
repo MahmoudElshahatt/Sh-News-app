@@ -1,6 +1,6 @@
-package com.shahtott.sh_news_app.ui.domain.useCase
+package com.shahtott.sh_news_app.domain.useCase
 
-import com.shahtott.sh_news_app.ui.domain.repository.LocalUserRepository
+import com.shahtott.sh_news_app.domain.repository.LocalUserRepository
 
 class SaveAppEntryUseCase(
     private val localUserRepository: LocalUserRepository
