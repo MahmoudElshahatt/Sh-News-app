@@ -41,7 +41,7 @@ fun OnBoardingScreen(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnBoardingContent(
+private fun OnBoardingContent(
     onEvent: (OnBoardingEvent) -> Unit
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
