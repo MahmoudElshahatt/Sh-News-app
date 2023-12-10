@@ -9,5 +9,5 @@ sealed class Routes(
     object DetailsScreen : Routes(route = "detailsScreen")
     object AppStartingNavigation : Routes(route = "appStartingNavigation")
     object NewsNavigation : Routes(route = "newsNavigation")
-    object NewsNavigatorScreen : Routes(route = "newsNavigatorScreen")
+    object MainNavigation : Routes(route = "mainNavigation")
 }

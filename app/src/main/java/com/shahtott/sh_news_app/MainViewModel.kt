@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
         appEntryUseCase.getAppEntryUseCase().onEach {
             startDestination = when (it) {
                 true -> {
-                    Routes.NewsNavigation.route
+                    Routes.MainNavigation.route
                 }
                 false -> {
                     Routes.AppStartingNavigation.route

@@ -23,11 +23,11 @@ fun NavGraph(startDestination: String) {
         }
 
         navigation(
-            route = Routes.NewsNavigation.route,
-            startDestination = Routes.NewsNavigatorScreen.route
+            route = Routes.MainNavigation.route,
+            startDestination = Routes.NewsNavigation.route
         ) {
-            composable(route = Routes.NewsNavigatorScreen.route) {
-                HomeScreen()
+            composable(route = Routes.NewsNavigation.route) {
+                HomeScreen(navController)
             }
         }
     }

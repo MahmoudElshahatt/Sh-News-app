@@ -6,7 +6,9 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -31,6 +33,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.shahtott.sh_news_app.R
+import com.shahtott.sh_news_app.ui.presentation.Dimens
 import com.shahtott.sh_news_app.ui.presentation.Dimens.SearchIconSize
 import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 
@@ -66,6 +69,7 @@ fun MainEditBar(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
+                .fillMaxHeight()
                 .searchBarBorder(),
             value = text,
             textStyle = textStyle,
@@ -133,7 +137,16 @@ fun Modifier.searchBarBorder() = composed {
 private fun PreviewSearchBar() {
     ShNewsappTheme {
         Surface {
-            //   SearchBar(Modifier, "Search", false, {}, {}, {})
+            MainEditBar(
+                modifier = Modifier
+                    .padding(horizontal = Dimens.padding16),
+                text = "",
+                readOnly = true,
+                onValueChanged = {},
+                onClick = {},
+                onSearch = {}
+            )
+
         }
     }
 

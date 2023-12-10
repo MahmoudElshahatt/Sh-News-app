@@ -19,8 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.shahtott.sh_news_app.R
-import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding1
-import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding2
+import com.shahtott.sh_news_app.ui.presentation.Dimens.padding16
+import com.shahtott.sh_news_app.ui.presentation.Dimens.padding24
 import com.shahtott.sh_news_app.ui.presentation.onboarding.Page
 import com.shahtott.sh_news_app.ui.presentation.onboarding.pages
 import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
@@ -40,16 +40,16 @@ fun onBoardingPage(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
-        Spacer(modifier = modifier.height(MediumPadding1))
+        Spacer(modifier = modifier.height(padding16))
         Text(
             text = page.title,
-            modifier = modifier.padding(horizontal = MediumPadding2),
+            modifier = modifier.padding(horizontal = padding24),
             style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
             color = colorResource(id = R.color.display_small)
         )
         Text(
             text = page.description,
-            modifier = modifier.padding(horizontal = MediumPadding2),
+            modifier = modifier.padding(horizontal = padding24),
             style = MaterialTheme.typography.bodyMedium,
             color = colorResource(id = R.color.text_medium)
         )

@@ -23,7 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding2
+import com.shahtott.sh_news_app.ui.presentation.Dimens.padding24
 import com.shahtott.sh_news_app.ui.presentation.Dimens.PageIndicatorWidth
 import com.shahtott.sh_news_app.ui.presentation.common.BackTextButton
 import com.shahtott.sh_news_app.ui.presentation.common.MainButton
@@ -68,7 +68,7 @@ private fun OnBoardingContent(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = MediumPadding2)
+                .padding(horizontal = padding24)
                 .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically

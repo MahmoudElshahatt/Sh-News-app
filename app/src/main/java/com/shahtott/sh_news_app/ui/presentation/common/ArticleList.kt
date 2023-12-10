@@ -1,6 +1,5 @@
 package com.shahtott.sh_news_app.ui.presentation.common
 
-import android.provider.MediaStore.Audio.Artists
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,7 +12,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ExtraSmallPadding2
-import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding1
+import com.shahtott.sh_news_app.ui.presentation.Dimens.padding16
 
 @Composable
 fun ArticleList(
@@ -25,7 +24,7 @@ fun ArticleList(
     if (handlePagingResult) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(MediumPadding1),
+            verticalArrangement = Arrangement.spacedBy(padding16),
             contentPadding = PaddingValues(all = ExtraSmallPadding2)
         ) {
             items(count = articles.itemCount) {position->
@@ -69,10 +68,10 @@ fun handlePagingResult(
 
 @Composable
 private fun ShimmerEffect() {
-    Column(verticalArrangement = Arrangement.spacedBy(MediumPadding1)) {
+    Column(verticalArrangement = Arrangement.spacedBy(padding16)) {
         repeat(10) {
             ArticleCardShimmerEffect(
-                modifier = Modifier.padding(horizontal = MediumPadding1)
+                modifier = Modifier.padding(horizontal = padding16)
             )
         }
     }
