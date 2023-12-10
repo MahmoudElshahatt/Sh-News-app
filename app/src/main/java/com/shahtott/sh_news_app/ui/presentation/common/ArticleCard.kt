@@ -33,6 +33,7 @@ import com.shahtott.sh_news_app.domain.model.Source
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ArticleCardSize
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ExtraSmallPadding
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ExtraSmallPadding2
+import com.shahtott.sh_news_app.ui.presentation.Dimens.MediumPadding1
 import com.shahtott.sh_news_app.ui.presentation.Dimens.SmallIconSize
 import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 
@@ -58,7 +59,7 @@ fun ArticleCard(
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
-                .padding(horizontal = ExtraSmallPadding)
+                .padding(horizontal = MediumPadding1)
                 .height(ArticleCardSize)
         ) {
             Text(
