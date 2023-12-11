@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.onboarding.OnBoardingScreen
 
 @Composable
@@ -22,11 +23,11 @@ fun NavGraph(startDestination: String) {
         }
 
         navigation(
-            route = Routes.NewsNavigation.route,
-            startDestination = Routes.NewsNavigatorScreen.route
+            route = Routes.MainNavigation.route,
+            startDestination = Routes.NewsNavigation.route
         ) {
-            composable(route = Routes.NewsNavigatorScreen.route) {
-
+            composable(route = Routes.NewsNavigation.route) {
+                HomeScreen(navController)
             }
         }
     }
