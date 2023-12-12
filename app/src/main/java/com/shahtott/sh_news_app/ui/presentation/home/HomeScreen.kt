@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -37,7 +38,7 @@ import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
 
 @Composable
 fun HomeScreen(
-    navController: NavHostController,
+    navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     HomeContent(viewModel.news.collectAsLazyPagingItems()) {

@@ -11,6 +11,7 @@ import com.shahtott.sh_news_app.domain.useCase.app_entry.GetAppEntryUseCase
 import com.shahtott.sh_news_app.domain.useCase.app_entry.SaveAppEntryUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.GetNewsUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.NewsUseCases
+import com.shahtott.sh_news_app.domain.useCase.news.SearchNewsUseCase
 import com.shahtott.sh_news_app.ui.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -62,7 +63,8 @@ object AppModule {
     fun provideNewsUseCases(
         newsRepository: NewsRepository
     ) = NewsUseCases(
-        getNewsUseCase = GetNewsUseCase(newsRepository)
+        getNewsUseCase = GetNewsUseCase(newsRepository),
+        searchNewsUseCase = SearchNewsUseCase(newsRepository)
     )
 
 }

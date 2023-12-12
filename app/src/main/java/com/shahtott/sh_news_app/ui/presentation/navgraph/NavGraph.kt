@@ -1,5 +1,6 @@
 package com.shahtott.sh_news_app.ui.presentation.navgraph
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,6 +29,10 @@ fun NavGraph(startDestination: String) {
         ) {
             composable(route = Routes.NewsNavigation.route) {
                 HomeScreen(navController)
+            }
+            composable(route = Routes.DetailsScreen.route) {
+                //         Det(navController)
+                Text(text = "Details")
             }
         }
     }
