@@ -8,6 +8,7 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.onboarding.OnBoardingScreen
+import com.shahtott.sh_news_app.ui.presentation.search.SearchScreen
 
 @Composable
 fun NavGraph(startDestination: String) {
@@ -30,8 +31,11 @@ fun NavGraph(startDestination: String) {
             composable(route = Routes.NewsNavigation.route) {
                 HomeScreen(navController)
             }
+            composable(route = Routes.SearchScreen.route) {
+                SearchScreen(navController)
+            }
             composable(route = Routes.DetailsScreen.route) {
-                //         Det(navController)
+                //       Det(navController)
                 Text(text = "Details")
             }
         }

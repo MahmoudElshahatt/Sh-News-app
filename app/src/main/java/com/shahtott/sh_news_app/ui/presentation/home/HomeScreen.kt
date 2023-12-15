@@ -87,7 +87,7 @@ fun HomeContent(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) 
             text = "",
             readOnly = true,
             onValueChanged = {},
-            onClick = {},
+            onClick = { navigate(Routes.SearchScreen.route) },
             onSearch = {}
         )
 

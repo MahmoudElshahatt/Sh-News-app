@@ -6,8 +6,10 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
@@ -32,6 +34,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.shahtott.sh_news_app.R
 import com.shahtott.sh_news_app.ui.presentation.Dimens
 import com.shahtott.sh_news_app.ui.presentation.Dimens.SearchIconSize
@@ -43,7 +46,7 @@ fun MainEditBar(
     modifier: Modifier = Modifier,
     text: String,
     readOnly: Boolean,
-    textStyle: TextStyle = MaterialTheme.typography.bodySmall,
+    textStyle: TextStyle = MaterialTheme.typography.bodySmall.copy(fontSize = 13.sp),
     startIconId: Int = R.drawable.ic_search,
     startIconTint: Int = R.color.body,
     onClick: (() -> Unit)? = null,

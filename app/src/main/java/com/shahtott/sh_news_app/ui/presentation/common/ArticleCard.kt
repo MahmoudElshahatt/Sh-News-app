@@ -25,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.shahtott.sh_news_app.R
@@ -63,7 +64,7 @@ fun ArticleCard(
         ) {
             Text(
                 text = article.title ?: "",
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.bodyMedium.copy(fontSize = 13.5.sp),
                 color = colorResource(id = R.color.text_title),
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
@@ -86,7 +87,8 @@ fun ArticleCard(
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                 Text(
                     text = article.publishedAt ?: "",
-                    style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                    style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp,
+                        fontWeight = FontWeight.Medium),
                     color = colorResource(id = R.color.body),
                 )
             }
