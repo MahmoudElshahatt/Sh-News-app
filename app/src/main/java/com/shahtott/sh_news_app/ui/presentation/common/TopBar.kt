@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -52,7 +53,7 @@ fun TopBar(
             }
             IconButton(onClick = onShareClick) {
                 Icon(
-                    imageVector = Icons.Default.Search,
+                    imageVector = Icons.Default.Share,
                     contentDescription = null
                 )
             }
