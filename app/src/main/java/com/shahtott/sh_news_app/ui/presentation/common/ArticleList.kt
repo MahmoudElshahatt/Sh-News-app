@@ -29,7 +29,7 @@ fun ArticleList(
         ) {
             items(count = articles.itemCount) {position->
                 articles[position]?.let{
-                    ArticleCard(article=it, onClick = {onClick})
+                    ArticleCard(article=it, onClick = {onClick(it)})
                 }
             }
         }
