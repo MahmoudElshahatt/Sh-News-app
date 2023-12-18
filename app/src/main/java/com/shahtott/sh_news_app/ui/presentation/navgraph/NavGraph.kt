@@ -36,7 +36,7 @@ fun NavGraph(startDestination: String) {
                 SearchScreen(navController)
             }
             composable(route = Routes.DetailsScreen.route) {
-                     DetailsScreen(navController)
+                DetailsScreen(navController)
             }
         }
     }
