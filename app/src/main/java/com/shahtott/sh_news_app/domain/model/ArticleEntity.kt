@@ -2,22 +2,19 @@ package com.shahtott.sh_news_app.domain.model
 
 import androidx.annotation.Keep
 import androidx.room.Entity
-import com.google.gson.annotations.SerializedName
+import androidx.room.PrimaryKey
 
 @Keep
 @Entity
 data class ArticleEntity(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = 0,
     val author: String? = "",
     val content: String? = "",
     val description: String? = "",
-    @SerializedName("publishedAt")
     val publishedAt: String? = "",
-    @SerializedName("source")
     val source: Source? = Source(),
-    @SerializedName("title")
     val title: String? = "",
-    @SerializedName("url")
     val url: String? = "",
-    @SerializedName("urlToImage")
     val urlToImage: String? = ""
 )
