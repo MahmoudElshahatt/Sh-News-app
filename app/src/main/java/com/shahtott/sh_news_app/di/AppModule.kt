@@ -1,6 +1,9 @@
 package com.shahtott.sh_news_app.di
 
 import android.content.Context
+import androidx.room.Room
+import com.shahtott.sh_news_app.data.local.room.NewsDatabase
+import com.shahtott.sh_news_app.data.local.room.NewsTypeConverter
 import com.shahtott.sh_news_app.data.remote.api.NewsApi
 import com.shahtott.sh_news_app.data.repositoryImpl.LocalUserRepositoryImpl
 import com.shahtott.sh_news_app.data.repositoryImpl.NewsRepositoryImpl
@@ -66,5 +69,24 @@ object AppModule {
         getNewsUseCase = GetNewsUseCase(newsRepository),
         searchNewsUseCase = SearchNewsUseCase(newsRepository)
     )
+
+    @Provides
+    @Singleton
+    fun provideNewsDatabase(
+        @ApplicationContext context: Context
+    ) = Room.databaseBuilder(
+        context = context,
+        klass = NewsDatabase::class.java,
+        name = NewsDatabase.DATA_BASE_NAME
+    ).addTypeConverter(NewsTypeConverter())
+        .fallbackToDestructiveMigration()
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideNewsDao(
+        newsDatabase: NewsDatabase
+    ) = newsDatabase.newsDao
+
 
 }

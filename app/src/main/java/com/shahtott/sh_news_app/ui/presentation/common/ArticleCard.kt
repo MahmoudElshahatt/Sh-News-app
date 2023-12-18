@@ -41,11 +41,11 @@ import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 fun ArticleCard(
     modifier: Modifier = Modifier,
     article: Article,
-    onClick: () -> Unit
+    onClick: (Article) -> Unit
 ) {
     val context = LocalContext.current
     Row(modifier = modifier
-        .clickable { onClick }) {
+        .clickable { onClick(article) }) {
 
         AsyncImage(
             modifier = Modifier

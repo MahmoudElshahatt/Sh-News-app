@@ -12,4 +12,10 @@ import com.shahtott.sh_news_app.domain.model.ArticleEntity
 @TypeConverters(NewsTypeConverter::class)
 abstract class NewsDatabase : RoomDatabase() {
 
+    companion object {
+        const val DATA_BASE_NAME = "news_db"
+    }
+
+    abstract val newsDao: NewsDao
+
 }

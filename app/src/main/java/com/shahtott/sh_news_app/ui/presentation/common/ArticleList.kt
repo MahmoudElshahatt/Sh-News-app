@@ -23,13 +23,18 @@ fun ArticleList(
     val handlePagingResult = handlePagingResult(articles = articles)
     if (handlePagingResult) {
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(padding16),
             contentPadding = PaddingValues(all = ExtraSmallPadding2)
         ) {
-            items(count = articles.itemCount) {position->
-                articles[position]?.let{
-                    ArticleCard(article=it, onClick = {onClick(it)})
+            items(
+                count = articles.itemCount,
+                key = {
+                    articles.itemSnapshotList.items[it].url ?: ""
+                },
+            ) { position ->
+                articles[position]?.let {
+                    ArticleCard(article = it, onClick =  onClick )
                 }
             }
         }

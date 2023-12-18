@@ -10,19 +10,31 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.shahtott.sh_news_app.data.local.room.NewsDao
+import com.shahtott.sh_news_app.domain.model.Article
+import com.shahtott.sh_news_app.domain.model.ArticleEntity
+import com.shahtott.sh_news_app.domain.model.Source
+import com.shahtott.sh_news_app.ui.presentation.details.DetailsContent
 import com.shahtott.sh_news_app.ui.presentation.navgraph.NavGraph
 import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
+    @Inject
+    lateinit var newsDao: NewsDao
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
+
         installSplashScreen().apply {
             setKeepOnScreenCondition {
                 viewModel.splashCondition
