@@ -1,4 +1,4 @@
-package com.shahtott.sh_news_app.data.local
+package com.shahtott.sh_news_app.data.local.preferences
 
 import android.content.Context
 import androidx.datastore.core.DataStore
