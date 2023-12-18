@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.shahtott.sh_news_app.ui.presentation.details.DetailsScreen
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.onboarding.OnBoardingScreen
 import com.shahtott.sh_news_app.ui.presentation.search.SearchScreen
@@ -35,8 +36,7 @@ fun NavGraph(startDestination: String) {
                 SearchScreen(navController)
             }
             composable(route = Routes.DetailsScreen.route) {
-                //       Det(navController)
-                Text(text = "Details")
+                     DetailsScreen(navController)
             }
         }
     }
