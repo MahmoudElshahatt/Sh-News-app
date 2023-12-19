@@ -66,7 +66,7 @@ fun SearchContent(
             onSearch = { event(SearchEvent.SearchNews) }
         )
 
-        Spacer(modifier = Modifier.height(padding24))
+        Spacer(modifier = Modifier.height(padding16))
 
         state.articles?.let {
             val articles = it.collectAsLazyPagingItems()

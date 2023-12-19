@@ -2,6 +2,7 @@ package com.shahtott.sh_news_app.ui.presentation.common
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,11 +11,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,15 +30,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.shahtott.sh_news_app.R
 import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.domain.model.Source
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ArticleCardSize
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ExtraSmallPadding2
-import com.shahtott.sh_news_app.ui.presentation.Dimens.padding16
 import com.shahtott.sh_news_app.ui.presentation.Dimens.SmallIconSize
+import com.shahtott.sh_news_app.ui.presentation.Dimens.padding16
+import com.shahtott.sh_news_app.ui.theme.LightGray
 import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
+import kotlinx.coroutines.Dispatchers
 
 @Composable
 fun ArticleCard(
@@ -44,14 +50,30 @@ fun ArticleCard(
     onClick: (Article) -> Unit
 ) {
     val context = LocalContext.current
-    Row(modifier = modifier
-        .clickable { onClick(article) }) {
+    val imageRequest = ImageRequest.Builder(context)
+        .data(article.urlToImage)
+        .memoryCacheKey(article.urlToImage)
+        .diskCacheKey(article.urlToImage)
+        .error(R.drawable.img_placeholder)
+        .fallback(R.drawable.img_placeholder)
+        .diskCachePolicy(CachePolicy.ENABLED)
+        .memoryCachePolicy(CachePolicy.ENABLED)
+        .build()
+
+
+
+    Row(
+        modifier = modifier
+            .clickable(interactionSource = remember { MutableInteractionSource() },
+                indication = rememberRipple(color = LightGray),
+                onClick = { onClick(article) })
+    ) {
 
         AsyncImage(
             modifier = Modifier
                 .size(ArticleCardSize)
                 .clip(MaterialTheme.shapes.medium),
-            model = ImageRequest.Builder(context).data(article.urlToImage).build(),
+            model = imageRequest,
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
@@ -87,8 +109,10 @@ fun ArticleCard(
                 Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                 Text(
                     text = article.publishedAt ?: "",
-                    style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp,
-                        fontWeight = FontWeight.Medium),
+                    style = MaterialTheme.typography.labelSmall.copy(
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Medium
+                    ),
                     color = colorResource(id = R.color.body),
                 )
             }
@@ -97,7 +121,7 @@ fun ArticleCard(
 }
 
 @Composable
-@Preview()
+@Preview(showSystemUi = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun PreviewArticleCard() {
     ShNewsappTheme {

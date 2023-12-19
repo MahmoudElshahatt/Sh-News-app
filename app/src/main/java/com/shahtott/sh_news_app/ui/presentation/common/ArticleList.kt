@@ -13,6 +13,7 @@ import androidx.paging.compose.LazyPagingItems
 import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ExtraSmallPadding2
 import com.shahtott.sh_news_app.ui.presentation.Dimens.padding16
+import com.shahtott.sh_news_app.ui.presentation.Dimens.padding8
 
 @Composable
 fun ArticleList(
@@ -34,7 +35,7 @@ fun ArticleList(
                 },
             ) { position ->
                 articles[position]?.let {
-                    ArticleCard(article = it, onClick =  onClick )
+                    ArticleCard(article = it, onClick = onClick)
                 }
             }
         }

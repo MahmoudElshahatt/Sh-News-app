@@ -106,7 +106,7 @@ fun HomeContent(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) 
         Spacer(modifier = Modifier.height(padding16))
 
         ArticleList(
-            modifier = Modifier.padding(horizontal = padding16),
+            modifier = Modifier.padding(horizontal = padding8),
             articles = articles,
             onClick = {
                 navigate(Routes.DetailsScreen.route)
