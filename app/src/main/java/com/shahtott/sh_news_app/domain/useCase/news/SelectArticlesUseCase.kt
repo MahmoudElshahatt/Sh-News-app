@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 class SelectArticlesUseCase(
     private val newsDao: NewsDao
 ) {
-    operator fun invoke(article: ArticleEntity): Flow<List<ArticleEntity>> {
+    operator fun invoke(): Flow<List<ArticleEntity>> {
         return newsDao.getArticles()
     }
 }

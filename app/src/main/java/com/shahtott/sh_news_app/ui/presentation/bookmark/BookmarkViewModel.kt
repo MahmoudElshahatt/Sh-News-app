@@ -1,8 +1,14 @@
 package com.shahtott.sh_news_app.ui.presentation.bookmark
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.shahtott.sh_news_app.domain.model.mapToArticles
 import com.shahtott.sh_news_app.domain.useCase.news.NewsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 
@@ -10,5 +16,18 @@ import javax.inject.Inject
 class BookmarkViewModel @Inject constructor(
     private val newsUseCase: NewsUseCases
 ) : ViewModel() {
+
+    private val _state = mutableStateOf(BookmarkState())
+    val state: State<BookmarkState> = _state
+
+    init {
+        getBookmarkArticles()
+    }
+
+    private fun getBookmarkArticles() {
+        newsUseCase.selectArticlesUseCase().onEach {
+            _state.value = _state.value.copy(articles = it.mapToArticles())
+        }.launchIn(viewModelScope)
+    }
 
 }

@@ -23,3 +23,17 @@ data class Article(
     @SerializedName("urlToImage")
     val urlToImage: String? = "" // https://media.wired.com/photos/65668f0cb38d7a2373721a48/191:100/w_1280,c_limit/Crpyto-Can't-Help-Itself-Business-1400047284.jpg
 )
+
+fun List<ArticleEntity>.mapToArticles() =
+    map {
+        Article(
+            author = it.author,
+            content = it.content,
+            description = it.description,
+            publishedAt = it.publishedAt,
+            source = it.source,
+            title = it.title,
+            url = it.url,
+            urlToImage = it.urlToImage
+        )
+    }

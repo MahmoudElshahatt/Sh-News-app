@@ -1,11 +1,11 @@
 package com.shahtott.sh_news_app.ui.presentation.navgraph
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import com.shahtott.sh_news_app.ui.presentation.bookmark.BookmarkScreen
 import com.shahtott.sh_news_app.ui.presentation.details.DetailsScreen
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.onboarding.OnBoardingScreen
@@ -37,6 +37,9 @@ fun NavGraph(startDestination: String) {
             }
             composable(route = Routes.DetailsScreen.route) {
                 DetailsScreen(navController)
+            }
+            composable(route = Routes.BookmarkScreen.route) {
+                BookmarkScreen(navController)
             }
         }
     }
