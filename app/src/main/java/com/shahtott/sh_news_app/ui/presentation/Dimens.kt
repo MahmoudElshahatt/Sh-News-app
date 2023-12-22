@@ -17,5 +17,7 @@ object Dimens {
     val SmallIconSize = 11.dp
     val SearchIconSize = 20.dp
     val ArticleImageSize = 248.dp
+    val IconSize = 20.dp
+
 
 }
