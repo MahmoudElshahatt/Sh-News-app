@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -34,11 +35,22 @@ import com.shahtott.sh_news_app.ui.util.shareText
 
 @Composable
 fun DetailsScreen(
-    navController: NavController,
+    navController: NavController
 ) {
-//    DetailsContent(
-//
-//    )
+    DetailsContent(
+        article = Article(
+            author = null,
+            content = null,
+            description = null,
+            publishedAt = null,
+            source = null,
+            title = null,
+            url = null,
+            urlToImage = null
+        ),
+        onEvent ={},
+        navigateUp = {}
+    )
 }
 
 @Composable

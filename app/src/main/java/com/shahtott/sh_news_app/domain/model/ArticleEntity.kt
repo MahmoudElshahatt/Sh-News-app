@@ -17,3 +17,15 @@ data class ArticleEntity(
     val url: String = "",
     val urlToImage: String? = "",
 )
+
+fun Article.mapToArticleEntity() = ArticleEntity(
+    author = this.author,
+    content = this.content,
+    description = this.description,
+    publishedAt = this.publishedAt,
+    source = this.source,
+    title = this.title,
+    url = this.url ?: "",
+    urlToImage = this.urlToImage
+)
+

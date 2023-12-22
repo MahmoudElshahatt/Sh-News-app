@@ -2,6 +2,7 @@ package com.shahtott.sh_news_app.di
 
 import android.content.Context
 import androidx.room.Room
+import com.shahtott.sh_news_app.data.local.room.NewsDao
 import com.shahtott.sh_news_app.data.local.room.NewsDatabase
 import com.shahtott.sh_news_app.data.local.room.NewsTypeConverter
 import com.shahtott.sh_news_app.data.remote.api.NewsApi
@@ -12,9 +13,12 @@ import com.shahtott.sh_news_app.domain.repository.NewsRepository
 import com.shahtott.sh_news_app.domain.useCase.app_entry.AppEntryUseCase
 import com.shahtott.sh_news_app.domain.useCase.app_entry.GetAppEntryUseCase
 import com.shahtott.sh_news_app.domain.useCase.app_entry.SaveAppEntryUseCase
+import com.shahtott.sh_news_app.domain.useCase.news.DeleteArticleUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.GetNewsUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.NewsUseCases
 import com.shahtott.sh_news_app.domain.useCase.news.SearchNewsUseCase
+import com.shahtott.sh_news_app.domain.useCase.news.SelectArticlesUseCase
+import com.shahtott.sh_news_app.domain.useCase.news.UpsertArticleUseCase
 import com.shahtott.sh_news_app.ui.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -64,11 +68,16 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsUseCases(
-        newsRepository: NewsRepository
+        newsRepository: NewsRepository,
+        newsDao: NewsDao
     ) = NewsUseCases(
         getNewsUseCase = GetNewsUseCase(newsRepository),
-        searchNewsUseCase = SearchNewsUseCase(newsRepository)
-    )
+        searchNewsUseCase = SearchNewsUseCase(newsRepository),
+        selectArticlesUseCase = SelectArticlesUseCase(newsDao),
+        deleteArticleUseCase = DeleteArticleUseCase(newsDao),
+        upsertArticleUseCase = UpsertArticleUseCase(newsDao),
+
+        )
 
     @Provides
     @Singleton
