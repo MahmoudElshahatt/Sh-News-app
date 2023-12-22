@@ -18,7 +18,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -79,7 +78,7 @@ fun DetailsContent(
                 )
             },
             onBookmarkClick = {
-                onEvent(DetailsEvent.SaveArticle)
+                onEvent(DetailsEvent.UpsertDeleteArticle(article))
             },
             onBackClick = navigateUp
         )

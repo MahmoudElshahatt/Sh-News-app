@@ -17,6 +17,7 @@ import com.shahtott.sh_news_app.domain.useCase.news.DeleteArticleUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.GetNewsUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.NewsUseCases
 import com.shahtott.sh_news_app.domain.useCase.news.SearchNewsUseCase
+import com.shahtott.sh_news_app.domain.useCase.news.SelectArticleUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.SelectArticlesUseCase
 import com.shahtott.sh_news_app.domain.useCase.news.UpsertArticleUseCase
 import com.shahtott.sh_news_app.ui.util.Constants
@@ -76,8 +77,8 @@ object AppModule {
         selectArticlesUseCase = SelectArticlesUseCase(newsDao),
         deleteArticleUseCase = DeleteArticleUseCase(newsDao),
         upsertArticleUseCase = UpsertArticleUseCase(newsDao),
-
-        )
+        selectArticleUseCase = SelectArticleUseCase(newsDao)
+    )
 
     @Provides
     @Singleton
