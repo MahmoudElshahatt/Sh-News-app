@@ -8,14 +8,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalAbsoluteTonalElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.shahtott.sh_news_app.R
 import com.shahtott.sh_news_app.ui.presentation.Dimens.ExtraSmallPadding2
 import com.shahtott.sh_news_app.ui.presentation.Dimens.IconSize
+import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 
 @Composable
 fun NewsBottomNavigation(
@@ -54,7 +59,9 @@ fun NewsBottomNavigation(
                     selectedTextColor = MaterialTheme.colorScheme.primary,
                     unselectedIconColor = colorResource(id = R.color.body),
                     unselectedTextColor = colorResource(id = R.color.body),
-                    indicatorColor = colorResource(id = R.color.primary_15)
+                    indicatorColor = MaterialTheme.colorScheme.surfaceColorAtElevation(
+                        LocalAbsoluteTonalElevation.current
+                    ).copy(alpha = 0f)
                 )
             )
         }
@@ -72,7 +79,14 @@ data class BottomNavigationItem(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewBottomNavigation() {
-    NewsBottomNavigation(items = listOf(BottomNavigationItem(R.drawable.ic_time, "Test")),
-        selected = 0,
-        onItemClick = {})
+    ShNewsappTheme {
+        Surface {
+            NewsBottomNavigation(
+                items = listOf(
+                    BottomNavigationItem(R.drawable.ic_home, "Home"),
+                    BottomNavigationItem(R.drawable.ic_search, "Search"),
+                    BottomNavigationItem(R.drawable.ic_bookmark, "Bookmark"),
+                ), selected = 0, onItemClick = {})
+        }
+    }
 }

@@ -35,20 +35,30 @@ import com.shahtott.sh_news_app.ui.presentation.Dimens.padding8
 import com.shahtott.sh_news_app.ui.presentation.common.ArticleList
 import com.shahtott.sh_news_app.ui.presentation.common.MainEditBar
 import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
+import com.shahtott.sh_news_app.ui.presentation.news_navigator.navigateToTap
 
 @Composable
 fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    HomeContent(viewModel.news.collectAsLazyPagingItems()) {
-        navController.navigate(it)
-    }
+    HomeContent(
+        viewModel.news.collectAsLazyPagingItems(),
+        navigateToSearch = { navigateToTap(navController, it) },
+        navigateToDetails = {
+
+        }
+    )
+
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeContent(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) {
+private fun HomeContent(
+    articles: LazyPagingItems<Article>,
+    navigateToSearch: (String) -> Unit,
+    navigateToDetails: (Article) -> Unit,
+) {
     val titles by remember {
         derivedStateOf {
             if (articles.itemCount > 10) {
@@ -87,7 +97,7 @@ fun HomeContent(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) 
             text = "",
             readOnly = true,
             onValueChanged = {},
-            onClick = { navigate(Routes.SearchScreen.route) },
+            onClick = { navigateToSearch(Routes.SearchScreen.route) },
             onSearch = {}
         )
 
@@ -109,9 +119,8 @@ fun HomeContent(articles: LazyPagingItems<Article>, navigate: (String) -> Unit) 
             modifier = Modifier.padding(horizontal = padding8),
             articles = articles,
             onClick = {
-                navigate(Routes.DetailsScreen.route)
+                navigateToDetails(it)
             })
-
     }
 }
 
