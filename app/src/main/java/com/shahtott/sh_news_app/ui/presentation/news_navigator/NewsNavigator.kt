@@ -18,8 +18,11 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.shahtott.sh_news_app.R
 import com.shahtott.sh_news_app.domain.model.Article
+import com.shahtott.sh_news_app.ui.presentation.bookmark.BookmarkScreen
 import com.shahtott.sh_news_app.ui.presentation.common.BottomNavigationItem
 import com.shahtott.sh_news_app.ui.presentation.common.NewsBottomNavigation
+import com.shahtott.sh_news_app.ui.presentation.details.DetailsContent
+import com.shahtott.sh_news_app.ui.presentation.details.DetailsScreen
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
 import com.shahtott.sh_news_app.ui.presentation.search.SearchScreen
@@ -78,6 +81,17 @@ fun NewsNavigator() {
             }
             composable(route = Routes.SearchScreen.route) {
                 SearchScreen({
+                    navigateToDetails(navController, it)
+                })
+            }
+            composable(route = Routes.DetailsScreen.route) {
+                navController.previousBackStackEntry?.savedStateHandle?.get<Article>("article")
+                    ?.let {
+                        DetailsScreen(it, { navController.navigateUp() })
+                    }
+            }
+            composable(route = Routes.BookmarkScreen.route) {
+                BookmarkScreen({
                     navigateToDetails(navController, it)
                 })
             }

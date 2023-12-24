@@ -28,21 +28,20 @@ import com.shahtott.sh_news_app.ui.theme.ShNewsappTheme
 
 @Composable
 fun BookmarkScreen(
-    navController: NavController,
+    navigateToDetails: (Article) -> Unit,
     viewModel: BookmarkViewModel = hiltViewModel(),
 ) {
     BookmarkContent(
         state = viewModel.state.value,
-    ) {
-        navController.navigate(it)
-    }
+        navigateToDetails = navigateToDetails
+    )
 }
 
 
 @Composable
-fun BookmarkContent(
+private fun BookmarkContent(
     state: BookmarkState,
-    navigate: (String) -> Unit
+    navigateToDetails: (Article) -> Unit,
 ) {
 
     Column(
@@ -60,7 +59,7 @@ fun BookmarkContent(
         Spacer(modifier = Modifier.height(padding16))
 
         ArticleList(articles = state.articles, onClick = {
-            navigate(Routes.DetailsScreen.route)
+            navigateToDetails(it)
         }
         )
     }
@@ -87,7 +86,7 @@ private fun PreviewBookmarkScreen() {
                         urlToImage = "https://media.wired.com/photos/6495d5e893ba5cd8bbdc95af/191:100/w_1280,c_limit/The-EU-Rules-Phone-Batteries-Must-Be-Replaceable-Gear-2BE6PRN.jpg"
                     )
                 )
-            ), navigate = {})
+            ), navigateToDetails = {})
         }
     }
 }
