@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.shahtott.sh_news_app.ui.presentation.bookmark.BookmarkScreen
 import com.shahtott.sh_news_app.ui.presentation.details.DetailsScreen
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
+import com.shahtott.sh_news_app.ui.presentation.news_navigator.NewsNavigator
 import com.shahtott.sh_news_app.ui.presentation.onboarding.OnBoardingScreen
 import com.shahtott.sh_news_app.ui.presentation.search.SearchScreen
 
@@ -30,16 +31,7 @@ fun NavGraph(startDestination: String) {
             startDestination = Routes.NewsNavigation.route
         ) {
             composable(route = Routes.NewsNavigation.route) {
-                HomeScreen(navController)
-            }
-            composable(route = Routes.SearchScreen.route) {
-                SearchScreen(navController)
-            }
-            composable(route = Routes.DetailsScreen.route) {
-                DetailsScreen(navController)
-            }
-            composable(route = Routes.BookmarkScreen.route) {
-                BookmarkScreen(navController)
+                NewsNavigator()
             }
         }
     }

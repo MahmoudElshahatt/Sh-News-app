@@ -78,7 +78,8 @@ fun SearchContent(
         }
     }
     LaunchedEffect(Unit) {
-        focusRequester.requestFocus()
+        //Uncomment this line to request focus for textField.
+        // focusRequester.requestFocus()
     }
 
 }

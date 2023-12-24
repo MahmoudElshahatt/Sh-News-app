@@ -6,8 +6,10 @@ import com.shahtott.sh_news_app.data.local.room.NewsDao
 import com.shahtott.sh_news_app.data.local.room.NewsDatabase
 import com.shahtott.sh_news_app.data.local.room.NewsTypeConverter
 import com.shahtott.sh_news_app.data.remote.api.NewsApi
+import com.shahtott.sh_news_app.data.repositoryImpl.ArticlesRepositoryImpl
 import com.shahtott.sh_news_app.data.repositoryImpl.LocalUserRepositoryImpl
 import com.shahtott.sh_news_app.data.repositoryImpl.NewsRepositoryImpl
+import com.shahtott.sh_news_app.domain.repository.ArticlesRepository
 import com.shahtott.sh_news_app.domain.repository.LocalUserRepository
 import com.shahtott.sh_news_app.domain.repository.NewsRepository
 import com.shahtott.sh_news_app.domain.useCase.app_entry.AppEntryUseCase
@@ -68,16 +70,22 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideArticlesRepository(newsDao: NewsDao)
+            : ArticlesRepository = ArticlesRepositoryImpl(newsDao)
+
+
+    @Provides
+    @Singleton
     fun provideNewsUseCases(
         newsRepository: NewsRepository,
-        newsDao: NewsDao
+        articlesRepository: ArticlesRepository
     ) = NewsUseCases(
         getNewsUseCase = GetNewsUseCase(newsRepository),
         searchNewsUseCase = SearchNewsUseCase(newsRepository),
-        selectArticlesUseCase = SelectArticlesUseCase(newsDao),
-        deleteArticleUseCase = DeleteArticleUseCase(newsDao),
-        upsertArticleUseCase = UpsertArticleUseCase(newsDao),
-        selectArticleUseCase = SelectArticleUseCase(newsDao)
+        selectArticlesUseCase = SelectArticlesUseCase(articlesRepository),
+        deleteArticleUseCase = DeleteArticleUseCase(articlesRepository),
+        upsertArticleUseCase = UpsertArticleUseCase(articlesRepository),
+        selectArticleUseCase = SelectArticleUseCase(articlesRepository)
     )
 
     @Provides

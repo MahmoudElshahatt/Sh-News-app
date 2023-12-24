@@ -1,6 +1,7 @@
 package com.shahtott.sh_news_app.ui.presentation.details
 
 import android.content.res.Configuration
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -41,6 +43,7 @@ fun DetailsScreen(
 ) {
     DetailsContent(
         article = article,
+        sideEffect = viewModel.sideEffect,
         onEvent = viewModel::onEvent,
         navigateUp = navigateUp
     )
@@ -49,10 +52,12 @@ fun DetailsScreen(
 @Composable
 fun DetailsContent(
     article: Article,
+    sideEffect: String?,
     onEvent: (DetailsEvent) -> Unit,
     navigateUp: () -> Unit
 ) {
     val context = LocalContext.current
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -113,6 +118,16 @@ fun DetailsContent(
             }
         }
     }
+
+    if (sideEffect != null) {
+        Toast.makeText(
+            LocalContext.current,
+            sideEffect,
+            Toast.LENGTH_SHORT
+        ).show()
+        onEvent(DetailsEvent.RemoveSideEffect)
+    }
+
 }
 
 
@@ -136,7 +151,7 @@ private fun PreviewDetailsScreen() {
                     urlToImage = "https://media.wired.com/photos/6495d5e893ba5cd8bbdc95af/191:100/w_1280,c_limit/The-EU-Rules-Phone-Batteries-Must-Be-Replaceable-Gear-2BE6PRN.jpg"
                 ),
                 onEvent = {},
-                // sideEffect = null
+                sideEffect = null
             ) {
 
             }

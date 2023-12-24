@@ -1,12 +1,12 @@
 package com.shahtott.sh_news_app.domain.useCase.news
 
-import com.shahtott.sh_news_app.data.local.room.NewsDao
 import com.shahtott.sh_news_app.domain.model.ArticleEntity
+import com.shahtott.sh_news_app.domain.repository.ArticlesRepository
 
 class SelectArticleUseCase(
-    private val newsDao: NewsDao
+    private val articlesRepository: ArticlesRepository
 ) {
     operator fun invoke(url: String): ArticleEntity? {
-        return newsDao.getArticle(url)
+        return articlesRepository.getArticle(url)
     }
 }

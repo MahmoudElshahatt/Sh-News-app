@@ -21,7 +21,6 @@ import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.ui.presentation.bookmark.BookmarkScreen
 import com.shahtott.sh_news_app.ui.presentation.common.BottomNavigationItem
 import com.shahtott.sh_news_app.ui.presentation.common.NewsBottomNavigation
-import com.shahtott.sh_news_app.ui.presentation.details.DetailsContent
 import com.shahtott.sh_news_app.ui.presentation.details.DetailsScreen
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
@@ -40,32 +39,43 @@ fun NewsNavigator() {
     }
 
     val navController = rememberNavController()
-    val backState = navController.currentBackStackEntryAsState().value
+    val backStackState = navController.currentBackStackEntryAsState().value
     var selectedItem by rememberSaveable {
         mutableStateOf(0)
     }
 
-    selectedItem = when (backState?.destination?.route) {
-        Routes.HomeScreen.route -> 0
-        Routes.SearchScreen.route -> 1
-        Routes.BookmarkScreen.route -> 2
-        else -> 0
+    selectedItem = remember(key1 = backStackState) {
+        when (backStackState?.destination?.route) {
+            Routes.HomeScreen.route -> 0
+            Routes.SearchScreen.route -> 1
+            Routes.BookmarkScreen.route -> 2
+            else -> 0
+        }
+    }
+
+    val isBottomBarVisible = remember(key1 = backStackState) {
+        backStackState?.destination?.route == Routes.HomeScreen.route
+                || backStackState?.destination?.route == Routes.SearchScreen.route
+                || backStackState?.destination?.route == Routes.BookmarkScreen.route
     }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            NewsBottomNavigation(
-                items = bottomNavigationItems,
-                selected = selectedItem,
-                onItemClick = { position ->
-                    when (position) {
-                        0 -> navigateToTap(navController, Routes.HomeScreen.route)
-                        1 -> navigateToTap(navController, Routes.SearchScreen.route)
-                        2 -> navigateToTap(navController, Routes.BookmarkScreen.route)
+            //Decide to recompose the bottom bar or not.
+            if (isBottomBarVisible) {
+                NewsBottomNavigation(
+                    items = bottomNavigationItems,
+                    selected = selectedItem,
+                    onItemClick = { position ->
+                        when (position) {
+                            0 -> navigateToTap(navController, Routes.HomeScreen.route)
+                            1 -> navigateToTap(navController, Routes.SearchScreen.route)
+                            2 -> navigateToTap(navController, Routes.BookmarkScreen.route)
+                        }
                     }
-                }
-            )
+                )
+            }
         }
     ) {
         val bottomPadding = it.calculateBottomPadding()

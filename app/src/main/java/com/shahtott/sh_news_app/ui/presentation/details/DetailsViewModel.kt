@@ -9,6 +9,8 @@ import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.domain.model.mapToArticleEntity
 import com.shahtott.sh_news_app.domain.useCase.news.NewsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -23,9 +25,9 @@ class DetailsViewModel @Inject constructor(
     fun onEvent(event: DetailsEvent) {
         when (event) {
             is DetailsEvent.UpsertDeleteArticle -> {
-                viewModelScope.launch {
+                CoroutineScope(Dispatchers.IO).launch {
                     val article =
-                        newsUseCase.selectArticleUseCase(event.article.mapToArticleEntity().url)
+                        newsUseCase.selectArticleUseCase(event.article.url ?: "")
                     if (article == null) {
                         upsertArticle(event.article)
                     } else {
@@ -35,21 +37,19 @@ class DetailsViewModel @Inject constructor(
             }
 
             DetailsEvent.RemoveSideEffect -> {
-              sideEffect = null
+                sideEffect = null
             }
         }
     }
 
     private suspend fun upsertArticle(article: Article) {
-        newsUseCase
-            .upsertArticleUseCase(article.mapToArticleEntity())
-        sideEffect ="Article Inserted"
+        newsUseCase.upsertArticleUseCase(article)
+        sideEffect = "Article Saved in Bookmark"
     }
 
     private suspend fun deleteArticle(article: Article) {
-        newsUseCase
-            .deleteArticleUseCase(article.mapToArticleEntity())
-        sideEffect ="Article Deleted"
+        newsUseCase.deleteArticleUseCase(article)
+        sideEffect = "Article Deleted from Bookmark"
     }
 
 }
