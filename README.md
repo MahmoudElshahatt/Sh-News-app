@@ -11,8 +11,8 @@ https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/1b2706b0-ea29-41a5
 
 
 
-<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/9859f3fe-2307-4610-a0bc-129c9c503c3f" width="350" height="700">
-<img src="https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/7208cc54-7a6f-4573-a645-7538c8d10d61" width="350" height="700">
+<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/9859f3fe-2307-4610-a0bc-129c9c503c3f" width="900" height="750">
+
 <img src="https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/d4d76b70-3c95-47b5-ac59-a94e728c4868" width="350" height="700">
 <img src="https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/7ad3b0c0-3988-4bd6-b3b7-ee1b4963d6f7" width="350" height="700">
 
