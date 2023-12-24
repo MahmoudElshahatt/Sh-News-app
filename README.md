@@ -1,6 +1,6 @@
-# Sh-musify
+# Sh-News-app
 
-An Android app built with Jetpack Compose and the latest android libraries.
+An Android app fetchs news from the network built with Jetpack Compose and the latest android libraries.
 
 
 ## App Preview
