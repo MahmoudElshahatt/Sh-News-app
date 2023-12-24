@@ -1,14 +1,9 @@
 # Sh-News-app
 
-An Android app fetchs news from the network built with Jetpack Compose and the latest android libraries.
+An Android app fetches news from the network built with Jetpack Compose and the latest Android libraries.
 
 
 ## App Preview
-
-
-
-https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/1b2706b0-ea29-41a5-a014-6a631cdcb82d
-
 
 
 <img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/9859f3fe-2307-4610-a0bc-129c9c503c3f" width="900" height="750">
