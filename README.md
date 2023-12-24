@@ -13,20 +13,21 @@ https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/1b2706b0-ea29-41a5
 
 <img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/9859f3fe-2307-4610-a0bc-129c9c503c3f" width="900" height="750">
 
-<img src="https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/d4d76b70-3c95-47b5-ac59-a94e728c4868" width="350" height="700">
-<img src="https://github.com/MahmoudElshahatt/Sh-musify/assets/79477855/7ad3b0c0-3988-4bd6-b3b7-ee1b4963d6f7" width="350" height="700">
+<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/dbe5adf9-1ce8-4c21-acc9-091a8d9cfb31"  width="900" height="750">
+
 
 
 ## Tech Stack
 
-
-* Media 3: The new home for media libraries that enables Android apps to display rich audio and visual experiences.
+* Jetpack Compose: Android's recommended modern toolkit for building native UI. It simplifies and accelerates UI development on Android.
+* Clean architecture: A method of software development in which you should be able to identify what a program performs merely by looking at its source code.
 * Hilt: Dependency injection for clean and modular code.
-* SharedPreferences: Manage user preferences and settings efficiently.
+* Data Store: Manage user preferences and settings efficiently.
 * Room database: Robust local data storage and caching for uninterrupted offline access.
 * MVVM architecture: Well-structured and maintainable codebase.
+* Coil: Effortlessly load and display book cover images with optimized caching and memory management.
 * Splash Screen 12: Create an engaging and visually appealing launch experience using the Splash Screen API.
-* Glide: Effortlessly load and display book cover images with optimized caching and memory management.
+
 
 ## Installation
 
