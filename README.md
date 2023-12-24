@@ -6,9 +6,9 @@ An Android app fetches news from the network built with Jetpack Compose and the 
 ## App Preview
 
 
-<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/9859f3fe-2307-4610-a0bc-129c9c503c3f" width="900" height="750">
+<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/9859f3fe-2307-4610-a0bc-129c9c503c3f" width="900" height="700">
 
-<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/dbe5adf9-1ce8-4c21-acc9-091a8d9cfb31"  width="900" height="750">
+<img src="https://github.com/MahmoudElshahatt/Sh-News-app/assets/79477855/dbe5adf9-1ce8-4c21-acc9-091a8d9cfb31"  width="900" height="700">
 
 
 
