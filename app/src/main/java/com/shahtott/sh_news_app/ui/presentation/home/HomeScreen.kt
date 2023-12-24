@@ -22,8 +22,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.shahtott.sh_news_app.R
@@ -35,19 +33,17 @@ import com.shahtott.sh_news_app.ui.presentation.Dimens.padding8
 import com.shahtott.sh_news_app.ui.presentation.common.ArticleList
 import com.shahtott.sh_news_app.ui.presentation.common.MainEditBar
 import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
-import com.shahtott.sh_news_app.ui.presentation.news_navigator.navigateToTap
 
 @Composable
 fun HomeScreen(
-    navController: NavController,
+    navigateToSearch: (String) -> Unit,
+    navigateToDetails: (Article) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     HomeContent(
         viewModel.news.collectAsLazyPagingItems(),
-        navigateToSearch = { navigateToTap(navController, it) },
-        navigateToDetails = {
-
-        }
+        navigateToSearch =   navigateToSearch,
+        navigateToDetails = navigateToDetails
     )
 
 }

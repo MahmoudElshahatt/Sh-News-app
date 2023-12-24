@@ -17,10 +17,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.shahtott.sh_news_app.R
+import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.ui.presentation.common.BottomNavigationItem
 import com.shahtott.sh_news_app.ui.presentation.common.NewsBottomNavigation
 import com.shahtott.sh_news_app.ui.presentation.home.HomeScreen
 import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
+import com.shahtott.sh_news_app.ui.presentation.search.SearchScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -70,13 +72,20 @@ fun NewsNavigator() {
             startDestination = Routes.HomeScreen.route
         ) {
             composable(route = Routes.HomeScreen.route) {
-                HomeScreen(navController = navController)
+                HomeScreen({ navigateToTap(navController, it) }, {
+                    navigateToDetails(navController, it)
+                })
+            }
+            composable(route = Routes.SearchScreen.route) {
+                SearchScreen({
+                    navigateToDetails(navController, it)
+                })
             }
         }
     }
 }
 
-fun navigateToTap(navController: NavController, route: String) {
+private fun navigateToTap(navController: NavController, route: String) {
     navController.navigate(route) {
         navController.graph.startDestinationRoute?.let { homeScreen ->
             popUpTo(homeScreen) {
@@ -86,4 +95,14 @@ fun navigateToTap(navController: NavController, route: String) {
             launchSingleTop = true
         }
     }
+}
+
+private fun navigateToDetails(
+    navController: NavController,
+    article: Article
+) {
+    navController.currentBackStackEntry?.savedStateHandle?.set("article", article)
+    navController.navigate(
+        route = Routes.DetailsScreen.route
+    )
 }

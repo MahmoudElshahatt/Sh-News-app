@@ -1,10 +1,13 @@
 package com.shahtott.sh_news_app.domain.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import kotlinx.parcelize.Parcelize
 
 @Keep
+@Parcelize
 data class Article(
     @SerializedName("author")
     val author: String? = "", // Joel Khalili
@@ -22,7 +25,7 @@ data class Article(
     val url: String? = "", // https://www.wired.com/story/bitcoin-etf-crypto-investments/
     @SerializedName("urlToImage")
     val urlToImage: String? = "" // https://media.wired.com/photos/65668f0cb38d7a2373721a48/191:100/w_1280,c_limit/Crpyto-Can't-Help-Itself-Business-1400047284.jpg
-)
+) : Parcelable
 
 fun List<ArticleEntity>.mapToArticles() =
     map {

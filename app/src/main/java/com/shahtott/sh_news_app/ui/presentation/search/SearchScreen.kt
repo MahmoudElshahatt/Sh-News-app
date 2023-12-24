@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.shahtott.sh_news_app.domain.model.Article
 import com.shahtott.sh_news_app.ui.presentation.Dimens
 import com.shahtott.sh_news_app.ui.presentation.Dimens.padding16
 import com.shahtott.sh_news_app.ui.presentation.Dimens.padding24
@@ -27,22 +28,21 @@ import com.shahtott.sh_news_app.ui.presentation.navgraph.Routes
 
 @Composable
 fun SearchScreen(
-    navController: NavController,
+    navigateToDetails: (Article) -> Unit,
     viewModel: SearchNewsViewModel = hiltViewModel()
 ) {
     SearchContent(
         viewModel.state.value,
-        viewModel::onEvent
-    ) {
-        navController.navigate(it)
-    }
+        viewModel::onEvent,
+        navigateToDetails
+    )
 }
 
 @Composable
 fun SearchContent(
     state: SearchState,
     event: (SearchEvent) -> Unit,
-    navigate: (String) -> Unit
+    navigateToDetails: (Article) -> Unit,
 ) {
     val focusRequester = FocusRequester()
 
@@ -73,7 +73,7 @@ fun SearchContent(
             ArticleList(
                 articles = articles
             ) {
-                navigate(Routes.DetailsScreen.route)
+                navigateToDetails(it)
             }
         }
     }
