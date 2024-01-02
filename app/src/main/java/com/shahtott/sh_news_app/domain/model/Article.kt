@@ -4,6 +4,7 @@ package com.shahtott.sh_news_app.domain.model
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
+import com.shahtott.sh_news_app.data.local.room.entity.ArticleEntity
 import kotlinx.parcelize.Parcelize
 
 @Keep

@@ -1,8 +1,10 @@
-package com.shahtott.sh_news_app.domain.model
+package com.shahtott.sh_news_app.data.local.room.entity
 
 import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.shahtott.sh_news_app.domain.model.Article
+import com.shahtott.sh_news_app.domain.model.Source
 
 @Keep
 @Entity

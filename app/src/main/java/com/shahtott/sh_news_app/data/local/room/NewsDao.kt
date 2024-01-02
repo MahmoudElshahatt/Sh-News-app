@@ -5,7 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.shahtott.sh_news_app.domain.model.ArticleEntity
+import com.shahtott.sh_news_app.data.local.room.entity.ArticleEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

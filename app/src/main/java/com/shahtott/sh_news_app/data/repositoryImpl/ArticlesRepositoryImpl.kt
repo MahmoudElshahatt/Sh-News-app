@@ -1,10 +1,9 @@
 package com.shahtott.sh_news_app.data.repositoryImpl
 
 import com.shahtott.sh_news_app.data.local.room.NewsDao
-import com.shahtott.sh_news_app.domain.model.ArticleEntity
+import com.shahtott.sh_news_app.data.local.room.entity.ArticleEntity
 import com.shahtott.sh_news_app.domain.repository.ArticlesRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.onEach
 
 class ArticlesRepositoryImpl(
     private val newsDao: NewsDao

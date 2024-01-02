@@ -4,9 +4,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.shahtott.sh_news_app.domain.model.Article
-import com.shahtott.sh_news_app.domain.model.mapToArticleEntity
 import com.shahtott.sh_news_app.domain.useCase.news.NewsUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope

@@ -3,7 +3,7 @@ package com.shahtott.sh_news_app.data.local.room
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.shahtott.sh_news_app.domain.model.ArticleEntity
+import com.shahtott.sh_news_app.data.local.room.entity.ArticleEntity
 
 @Database(
     entities = [ArticleEntity::class],
